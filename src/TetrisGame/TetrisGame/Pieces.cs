@@ -287,7 +287,7 @@ namespace TetrisGame
    },
         };
 
-        // Метод: получить тип блока (0, 1, 2) Возвращает тип блока по координатам
+        // Возвращает тип блока (0 = без блока, 1 = обычный блок, 2 = опорный блок)
         public int GetBlockType(int pPiece, int pRotation, int pX, int pY)
         {
             return mPieces[pPiece, pRotation, pX, pY];
