@@ -60,5 +60,49 @@ namespace TetrisGame
             }
         }
 
+        public bool IsGameOver()
+        {
+            for(int x = 0; x < BOARD_WIDTH; x++)
+            {
+                if (mBoard[x, 0] == POS_FILLED)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        //Y: Vertical position in blocks of the line to delete
+        public void DeleteLine(int y)
+        {
+            for (int j = y; j > 0; j--) // rows
+            {
+                for (int i = 0; i < BOARD_WIDTH; i++) //cols
+                {
+                    mBoard[i, j] = mBoard[i, j - 1];
+                }
+            }
+        }
+
+        public void DeletePossibleLines()
+        {
+            for(int j = 0; j < BOARD_HEIGHT; j++)
+            {
+                int i = 0;
+                while(i < BOARD_WIDTH)
+                {
+                    if (mBoard[i, j] == POS_FILLED)
+                    {
+                        i++;
+                    }
+                }
+                if(i == BOARD_WIDTH)
+                {
+                    DeleteLine(j);
+                }
+            }
+        }
+
+
     }
 }
