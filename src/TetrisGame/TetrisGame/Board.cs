@@ -62,7 +62,7 @@ namespace TetrisGame
 
         public bool IsGameOver()
         {
-            for(int x = 0; x < BOARD_WIDTH; x++)
+            for (int x = 0; x < BOARD_WIDTH; x++)
             {
                 if (mBoard[x, 0] == POS_FILLED)
                 {
@@ -77,32 +77,57 @@ namespace TetrisGame
         {
             for (int j = y; j > 0; j--) // rows
             {
-                for (int i = 0; i < BOARD_WIDTH; i++) //cols
+                for (int i = 0; i < BOARD_WIDTH; i++) //cols по X
                 {
                     mBoard[i, j] = mBoard[i, j - 1];
                 }
             }
+
+            //// верхняя строка — чистая
+            //for (int i = 0; i < BOARD_WIDTH; i++)
+            //{
+            //    mBoard[i, 0] = POS_FREE;
+            //}
         }
 
         public void DeletePossibleLines()
         {
-            for(int j = 0; j < BOARD_HEIGHT; j++)
+            for(int y = 0; y < BOARD_HEIGHT; y++)
             {
-                int i = 0;
-                while(i < BOARD_WIDTH)
+                int filled = 0;
+                while(filled < BOARD_WIDTH)
                 {
-                    if (mBoard[i, j] == POS_FILLED)
+                    if (mBoard[filled, y] == POS_FILLED)
                     {
-                        i++;
+                        filled++;
                     }
                 }
-                if(i == BOARD_WIDTH)
+                if(filled == BOARD_WIDTH)
                 {
-                    DeleteLine(j);
+                    DeleteLine(y);
                 }
             }
         }
 
+        public bool IsPossibleToMovement (int x, int y, int pPiece, int pRotation)
+        {
+            for (int i1 = x, i2 = 0; i1 < x + PIECE_BLOCKS; i1++, i2++)
+            {
+                for (int j1 = y, j2 = 0; j1 < y + PIECE_BLOCKS; j1++, j2++)
+                {
+                    // Вне поля
+                    if (i1 < 0 || i1 >= BOARD_WIDTH || j1 >= BOARD_HEIGHT)
+                    {
+                        if (mPieces.GetBlockType(pPiece, pRotation, j2, i2) != 0)
+                            return false;
+                    }
 
+                    // Столкновение
+                    if (j1 >= 0 && mPieces.GetBlockType(pPiece, pRotation, j2, i2) != 0 &&
+                        !IsFreeBlock(i1, j1))
+                        return false;
+                }
+            }
+        }
     }
 }
