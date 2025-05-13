@@ -125,9 +125,12 @@ namespace TetrisGame
                     // Столкновение
                     if (j1 >= 0 && mPieces.GetBlockType(pPiece, pRotation, j2, i2) != 0 &&
                         !IsFreeBlock(i1, j1))
+                    {
                         return false;
+                    }
                 }
             }
+            return true;
         }
     }
 }

@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//#include "Board.cs"
-//#include "Pieces."cs
-////#include "IO.h"
-////#include <time.h>
 
 namespace TetrisGame
 {
@@ -38,6 +34,34 @@ namespace TetrisGame
             InitGame();
         }
 
+        private int GetRand(int a, int b)
+        {
+            return random.Next(a, b + 1); 
+        }
 
+        //Инициализация первой и следующей фигуры
+        public void InitGame()
+        {
+            CurrentPiece = GetRand(0, 6);
+            CurrentRotation = GetRand(0, 3);
+            CurrentX = (BOARD_WIDTH / 2) + pieces.GetXInitialPosition(CurrentPiece, CurrentRotation);
+            CurrentY = pieces.GetYInitialPosition(CurrentPiece, CurrentRotation);
+
+            // Следующая фигура
+            nextPiece = GetRand(0, 6);
+            nextRotation = GetRand(0, 3);
+        }
+
+        //Спавн следующей фигуры и заготовка новой
+        public  void CreateNewPiece()
+        {
+            CurrentPiece = nextPiece;
+            CurrentRotation = nextRotation;
+            CurrentX = (BOARD_WIDTH / 2) + pieces.GetXInitialPosition(CurrentPiece, CurrentRotation);
+            CurrentY = pieces.GetYInitialPosition(CurrentPiece, CurrentRotation);
+
+            nextPiece = GetRand(0, 6);
+            nextRotation = GetRand(0, 3);
+        }
     }
 }
