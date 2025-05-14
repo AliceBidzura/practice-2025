@@ -1,9 +1,0 @@
-
-name = "Ananke"
-license = "MIT"
-licenselink = "https://github.com/theNewDynamic/gohugo-theme-ananke/blob/master/LICENSE"
-description = "A theme with modern design."
-min_version = "0.41"
-[author]
-  name = "Bud Parr"
-  homepage = "https://theNewDynamic.com"
