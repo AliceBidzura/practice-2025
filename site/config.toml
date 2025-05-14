@@ -1,0 +1,13 @@
+
+baseURL = "/"
+languageCode = "ru"
+title = "ИТ-сервисы для Цифрового университета"
+theme = "ananke"
+paginate = 10
+
+[params]
+  author = "Команда проекта"
+  description = "Цифровые сервисы для образования: личный кабинет, мобильные приложения, визуализация, парсинг, Политайм"
+  text_color = ""
+  background_color_class = "bg-black"
+  featured_image = ""
