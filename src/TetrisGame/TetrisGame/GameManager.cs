@@ -15,14 +15,16 @@ namespace TetrisGame
         public readonly Pieces pieces;
         private readonly Board board;
         private readonly Random random;
+        public Board Board => board; // публичное только для чтения
+
 
         public int CurrentPiece;
         public int CurrentRotation;
         public int CurrentX;
         public int CurrentY;
 
-        public int Score { get; private set; }
-        public int Lines { get; private set; }
+        public int Score { get; set; }
+        public int Lines { get;  set; }
         public int Level => Lines / 10 + 1; // Каждые 10 линий — новый уровень
 
 

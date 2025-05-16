@@ -95,24 +95,28 @@ namespace TetrisGame
             //}
         }
 
-        public void DeletePossibleLines()
+        public int DeletePossibleLines()
         {
-            for(int y = 0; y < BOARD_HEIGHT; y++)
+            int linesRemoved = 0;
+
+            for (int y = 0; y < 20; y++)
             {
                 int filled = 0;
-                while(filled < BOARD_WIDTH)
+                while (filled < 10 && mBoard[filled, y] == 1)
                 {
-                    if (mBoard[filled, y] == POS_FILLED)
-                    {
-                        filled++;
-                    }
+                    filled++;
                 }
-                if(filled == BOARD_WIDTH)
+
+                if (filled == 10)
                 {
                     DeleteLine(y);
+                    linesRemoved++;
                 }
             }
+
+            return linesRemoved; // ← ОБЯЗАТЕЛЬНО
         }
+
 
         public bool IsPossibleToMovement (int x, int y, int pPiece, int pRotation)
         {
