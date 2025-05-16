@@ -58,5 +58,49 @@
                 GameCanvas.Invalidate(); // Перерисовка
             });
         }
+        private void HandleInput(string input)
+        {
+            switch (input)
+            {
+                case "Left":
+                    if (board.IsPossibleToMovement(game.CurrentX - 1, game.CurrentY, game.CurrentPiece, game.CurrentRotation))
+                    {
+                        game.CurrentX--;
+                        GameCanvas.Invalidate();
+                    }
+                    break;
+
+                case "Right":
+                    if (board.IsPossibleToMovement(game.CurrentX + 1, game.CurrentY, game.CurrentPiece, game.CurrentRotation))
+                    {
+                        game.CurrentX++;
+                        GameCanvas.Invalidate();
+                    }
+                    break;
+
+                case "Down":
+                    if (board.IsPossibleToMovement(game.CurrentX, game.CurrentY + 1, game.CurrentPiece, game.CurrentRotation))
+                    {
+                        game.CurrentY++;
+                        GameCanvas.Invalidate();
+                    }
+                    break;
+
+                case "Rotate":
+                    int newRotation = (game.CurrentRotation + 1) % 4;
+                    if (board.IsPossibleToMovement(game.CurrentX, game.CurrentY, game.CurrentPiece, newRotation))
+                    {
+                        game.CurrentRotation = newRotation;
+                        GameCanvas.Invalidate();
+                    }
+                    break;
+            }
+        }
+        // обработчики кнопок
+        private void OnLeftClicked(object sender, EventArgs e) => HandleInput("Left");
+        private void OnRightClicked(object sender, EventArgs e) => HandleInput("Right");
+        private void OnDownClicked(object sender, EventArgs e) => HandleInput("Down");
+        private void OnRotateClicked(object sender, EventArgs e) => HandleInput("Rotate");
+
     }
 }

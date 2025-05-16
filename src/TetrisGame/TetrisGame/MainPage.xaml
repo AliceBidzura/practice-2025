@@ -3,10 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TetrisGame.MainPage"
              BackgroundColor="Black">
-    <GraphicsView x:Name="GameCanvas"
-                  Drawable="{Binding TetrisDrawable}"
-                  HeightRequest="600"
-                  WidthRequest="300"
-                  HorizontalOptions="Center"
-                  VerticalOptions="Center"/>
+    <VerticalStackLayout Spacing="10" Padding="10" HorizontalOptions="Center">
+        <!-- Игровое поле -->
+        <GraphicsView x:Name="GameCanvas"
+              Drawable="{Binding TetrisDrawable}"
+              HeightRequest="600"
+              WidthRequest="300"
+              HorizontalOptions="Center"
+              VerticalOptions="Center"/>
+        <!-- Кнопки управления -->
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Button Text="◄" Clicked="OnLeftClicked"/>
+            <Button Text="▼" Clicked="OnDownClicked"/>
+            <Button Text="►" Clicked="OnRightClicked"/>
+            <Button Text="⟳" Clicked="OnRotateClicked"/>
+        </StackLayout>
+    </VerticalStackLayout>
 </ContentPage>
