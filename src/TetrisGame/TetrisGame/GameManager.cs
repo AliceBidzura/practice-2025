@@ -11,7 +11,7 @@ namespace TetrisGame
         private const int BOARD_WIDTH = 10;
         //private const int BOARD_HEIGHT = 20;
 
-        // ЧЧЧ —сылки на другие классы ЧЧЧ
+        // —сылки на другие классы
         public readonly Pieces pieces;
         private readonly Board board;
         private readonly Random random;
@@ -21,10 +21,16 @@ namespace TetrisGame
         public int CurrentX;
         public int CurrentY;
 
-        // ЧЧЧ —ледующа€ фигура ЧЧЧ
+        public int Score { get; private set; }
+        public int Lines { get; private set; }
+        public int Level => Lines / 10 + 1; //  аждые 10 линий Ч новый уровень
+
+
+        //—ледующа€ фигура
         private int nextPiece;
         private int nextRotation;
 
+        //¬ конструкторе
         public GameManager(Board board, Pieces pieces)
         {
             this.pieces = pieces;
@@ -50,6 +56,9 @@ namespace TetrisGame
             // —ледующа€ фигура
             nextPiece = GetRand(0, 6);
             nextRotation = GetRand(0, 3);
+
+            Score = 0;
+            Lines = 0;
         }
 
         //—павн следующей фигуры и заготовка новой

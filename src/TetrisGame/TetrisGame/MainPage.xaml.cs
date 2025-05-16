@@ -27,6 +27,7 @@ namespace TetrisGame
             BindingContext = this;
 
             StartTimer();
+            UpdateStats();
             GameCanvas.Invalidate();
             NextPieceCanvas.Invalidate();
         }
@@ -50,7 +51,13 @@ namespace TetrisGame
                 else
                 {
                     board.StorePiece(game.CurrentX, game.CurrentY, game.CurrentPiece, game.CurrentRotation);
-                    board.DeletePossibleLines();
+                    int linesCleared = board.DeletePossibleLines();
+                    if (linesCleared > 0)
+                    {
+                        game.Lines += linesCleared;
+                        game.Score += GetScoreForLines(linesCleared, game.Level);
+                    }
+
 
                     if (board.IsGameOver())
                     {
@@ -60,6 +67,7 @@ namespace TetrisGame
                     }
 
                     game.CreateNewPiece();
+                    UpdateStats();
                 }
                 GameCanvas.Invalidate(); // Перерисовка
                 NextPieceCanvas.Invalidate();
@@ -109,6 +117,24 @@ namespace TetrisGame
         private void OnRightClicked(object sender, EventArgs e) => HandleInput("Right");
         private void OnDownClicked(object sender, EventArgs e) => HandleInput("Down");
         private void OnRotateClicked(object sender, EventArgs e) => HandleInput("Rotate");
+
+        private int GetScoreForLines(int lines, int level)
+        {
+            return lines switch
+            {
+                1 => 40 * level,
+                2 => 100 * level,
+                3 => 300 * level,
+                4 => 1200 * level,
+                _ => 0
+            };
+        }
+        private void UpdateStats()
+        {
+            ScoreLabel.Text = $"Score: {game.Score}";
+            LinesLabel.Text = $"Lines: {game.Lines}";
+            LevelLabel.Text = $"Level: {game.Level}";
+        }
 
     }
 }

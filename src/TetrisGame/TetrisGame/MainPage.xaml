@@ -35,5 +35,11 @@
             <Button Text="►" Clicked="OnRightClicked"/>
             <Button Text="⟳" Clicked="OnRotateClicked"/>
         </StackLayout>
+        <!--Отображение информации-->
+        <StackLayout Orientation="Vertical" Spacing="5" Padding="10">
+            <Label x:Name="ScoreLabel" Text="Score: 0" TextColor="White" FontSize="18"/>
+            <Label x:Name="LinesLabel" Text="Lines: 0" TextColor="White" FontSize="18"/>
+            <Label x:Name="LevelLabel" Text="Level: 1" TextColor="White" FontSize="18"/>
+        </StackLayout>
     </VerticalStackLayout>
 </ContentPage>
