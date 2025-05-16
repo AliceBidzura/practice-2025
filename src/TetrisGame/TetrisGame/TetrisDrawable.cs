@@ -29,6 +29,20 @@ namespace TetrisGame
                 }
             }
 
+            //Заполненные ячейки
+            for (int x = 0; x < 10; x++)
+            {
+                for (int y = 0; y < 20; y++)
+                {
+                    if (game.Board.mBoard[x, y] == 1) // POS_FILLED
+                    {
+                        canvas.FillColor = Colors.Gray; // Или GetColorForPiece(...)
+                        canvas.FillRectangle(x * CellSize, y * CellSize, CellSize - 1, CellSize - 1);
+                    }
+                }
+            }
+
+
             // Фигура
             canvas.FillColor = Colors.Cyan;
             for (int i = 0; i < 5; i++) // x в фигуре

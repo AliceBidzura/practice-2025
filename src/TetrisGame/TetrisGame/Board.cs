@@ -20,6 +20,11 @@ namespace TetrisGame
         public readonly int[,] mBoard = new int[BOARD_WIDTH, BOARD_WIDTH];
         public readonly Pieces mPieces;
 
+        //public int GetBlock(int x, int y)
+        //{
+        //    return mBoard[x, y];
+        //}
+
         public Board(Pieces pieces)
         {
             mPieces = pieces;

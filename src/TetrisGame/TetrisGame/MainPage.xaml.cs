@@ -35,29 +35,25 @@
             {
                 int newY = game.CurrentY + 1;
 
-                if (board.IsPossibleMovement(game.CurrentX, newY, game.CurrentPiece, game.CurrentRotation))
+                if (board.IsPossibleToMovement(game.CurrentX, game.CurrentY + 1, game.CurrentPiece, game.CurrentRotation))
                 {
-                    game.CurrentY = newY;
+                    game.CurrentY++;
                 }
                 else
                 {
-                    // Фигура упала — сохранить её в поле
                     board.StorePiece(game.CurrentX, game.CurrentY, game.CurrentPiece, game.CurrentRotation);
-
-                    // Удалить заполненные линии
                     board.DeletePossibleLines();
 
-                    // Проверка на Game Over
                     if (board.IsGameOver())
                     {
                         fallTimer.Stop();
-                        DisplayAlert("Игра окончена", "Ты проиграл", "OK");
+                        DisplayAlert("Игра окончена", "Ты проиграл", "ОК");
                         return;
                     }
 
-                    // Создать новую фигуру
                     game.CreateNewPiece();
                 }
+
 
                 GameCanvas.Invalidate(); // Перерисовка
             });
