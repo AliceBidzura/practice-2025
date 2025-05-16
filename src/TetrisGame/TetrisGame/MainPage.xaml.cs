@@ -1,4 +1,8 @@
-﻿namespace TetrisGame
+﻿using Microsoft.Maui.Controls;
+using System;
+using System.Timers;
+
+namespace TetrisGame
 {
     public partial class MainPage : ContentPage
     {
@@ -7,6 +11,8 @@
         private GameManager game;
 
         public TetrisDrawable TetrisDrawable { get; set; }
+        public NextPieceDrawable NextPieceDrawable { get; set; }
+
         public MainPage()
         {
             InitializeComponent();
@@ -16,11 +22,13 @@
             game = new GameManager(board, pieces);
 
             TetrisDrawable = new TetrisDrawable(game);
+            NextPieceDrawable = new NextPieceDrawable(game);
+
             BindingContext = this;
 
             StartTimer();
-
             GameCanvas.Invalidate();
+            NextPieceCanvas.Invalidate();
         }
         private void StartTimer()
         {
@@ -33,7 +41,7 @@
         {
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                int newY = game.CurrentY + 1;
+                //int newY = game.CurrentY + 1;
 
                 if (board.IsPossibleToMovement(game.CurrentX, game.CurrentY + 1, game.CurrentPiece, game.CurrentRotation))
                 {
@@ -53,11 +61,11 @@
 
                     game.CreateNewPiece();
                 }
-
-
                 GameCanvas.Invalidate(); // Перерисовка
+                NextPieceCanvas.Invalidate();
             });
         }
+        // Обработка кнопок управления
         private void HandleInput(string input)
         {
             switch (input)

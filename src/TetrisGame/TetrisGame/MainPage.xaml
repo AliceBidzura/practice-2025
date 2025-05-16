@@ -4,14 +4,31 @@
              x:Class="TetrisGame.MainPage"
              BackgroundColor="Black">
     <VerticalStackLayout Spacing="10" Padding="10" HorizontalOptions="Center">
-        <!-- Игровое поле -->
-        <GraphicsView x:Name="GameCanvas"
-              Drawable="{Binding TetrisDrawable}"
-              HeightRequest="600"
-              WidthRequest="300"
-              HorizontalOptions="Center"
-              VerticalOptions="Center"/>
-        <!-- Кнопки управления -->
+        <Grid Padding="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Игровое поле -->
+            <GraphicsView Grid.Column="0"
+                  x:Name="GameCanvas"
+                  Drawable="{Binding TetrisDrawable}"
+                  WidthRequest="300"
+                  HeightRequest="600"
+                  BackgroundColor="Black" />
+
+            <!-- Блок следующей фигуры -->
+            <VerticalStackLayout Grid.Column="1" Spacing="10" Padding="10">
+                <Label Text="Next:" TextColor="White" FontSize="20" HorizontalOptions="Center"/>
+                <GraphicsView x:Name="NextPieceCanvas"
+                      Drawable="{Binding NextPieceDrawable}"
+                      WidthRequest="150"
+                      HeightRequest="150"
+                      BackgroundColor="Black" />
+            </VerticalStackLayout>
+        </Grid>
+        <!-- Нижняя часть: Кнопки управления -->
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
             <Button Text="◄" Clicked="OnLeftClicked"/>
             <Button Text="▼" Clicked="OnDownClicked"/>
