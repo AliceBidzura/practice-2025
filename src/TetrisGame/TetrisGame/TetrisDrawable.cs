@@ -5,23 +5,47 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Maui.Graphics;
 
-public class TetrisDrawable : IDrawable
+namespace TetrisGame
 {
-    public void Draw(ICanvas canvas, RectF dirtyRect)
+    public class TetrisDrawable : IDrawable
     {
-        canvas.FillColor = Colors.Gray;
+        private readonly GameManager game;
+        private const int CellSize = 30;
 
-        const int rows = 20;
-        const int cols = 10;
-        const float cellSize = 30;
-
-        for (int y = 0; y < rows; y++)
+        public TetrisDrawable(GameManager game)
         {
-            for (int x = 0; x < cols; x++)
+            this.game = game;
+        }
+
+        public void Draw(ICanvas canvas, RectF dirtyRect)
+        {
+            // Сетка
+            canvas.FillColor = Colors.DarkGray;
+            for (int x = 0; x < 10; x++)
             {
-                canvas.FillRectangle(x * cellSize, y * cellSize, cellSize - 1, cellSize - 1);
+                for (int y = 0; y < 20; y++)
+                {
+                    canvas.FillRectangle(x * CellSize, y * CellSize, CellSize - 1, CellSize - 1);
+                }
+            }
+
+            // Фигура
+            canvas.FillColor = Colors.Cyan;
+            for (int i = 0; i < 5; i++) // x в фигуре
+            {
+                for (int j = 0; j < 5; j++) // y в фигуре
+                {
+                    if (game.pieces.GetBlockType(game.CurrentPiece, game.CurrentRotation, i, j) != 0)
+                    {
+                        int screenX = game.CurrentX + i;
+                        int screenY = game.CurrentY + j;
+
+                        canvas.FillRectangle(screenX * CellSize, screenY * CellSize, CellSize - 1, CellSize - 1);
+                    }
+                }
             }
         }
     }
+
 }
 

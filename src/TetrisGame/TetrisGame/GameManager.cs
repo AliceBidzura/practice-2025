@@ -9,10 +9,10 @@ namespace TetrisGame
     public class GameManager
     {
         private const int BOARD_WIDTH = 10;
-        private const int BOARD_HEIGHT = 20;
+        //private const int BOARD_HEIGHT = 20;
 
         // ЧЧЧ —сылки на другие классы ЧЧЧ
-        private readonly Pieces pieces;
+        public readonly Pieces pieces;
         private readonly Board board;
         private readonly Random random;
 

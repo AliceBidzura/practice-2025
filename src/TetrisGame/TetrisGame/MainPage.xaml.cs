@@ -7,12 +7,14 @@
         {
             InitializeComponent();
 
-            //TetrisDrawable = new TetrisDrawable();
-            //BindingContext = this;
+            var pieces = new Pieces();
+            var board = new Board(pieces);
+            var game = new GameManager(board, pieces);
 
-            //var pieces = new Pieces();
-            //int block = pieces.GetBlockType(0, 0, 2, 2);
-            //Console.WriteLine(block);
+            TetrisDrawable = new TetrisDrawable(game);
+            BindingContext = this;
+
+            GameCanvas.Invalidate();
         }
         
     }

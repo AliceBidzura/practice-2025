@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TetrisGame.MainPage"
              BackgroundColor="Black">
-    <!--<GraphicsView x:Name="GameCanvas"
+    <GraphicsView x:Name="GameCanvas"
                   Drawable="{Binding TetrisDrawable}"
                   HeightRequest="600"
-                  WidthRequest="300"/>-->
+                  WidthRequest="300"
+                  HorizontalOptions="Center"
+                  VerticalOptions="Center"/>
 </ContentPage>
