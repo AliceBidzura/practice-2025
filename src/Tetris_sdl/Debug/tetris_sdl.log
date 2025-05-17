@@ -1,0 +1,13 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(520,5): warning MSB8003: свойство WindowsSDKDir не определено. Возможно, не найдены некоторые средства сборки.
+cl : командная строка  warning D9035: использование параметра "Gm" нежелательно, он будет удален в следующих выпусках
+  Main.cpp
+  IO.cpp
+D:\учебники и топ\tetris_tutorial_sdl\SDL\include\SDL_stdinc.h(35,10): error C1083: Не удается открыть файл включение: stdio.h: No such file or directory,
+  (компиляция исходного файла "Main.cpp")
+  
+D:\учебники и топ\tetris_tutorial_sdl\SDL\include\SDL_stdinc.h(35,10): error C1083: Не удается открыть файл включение: stdio.h: No such file or directory,
+  (компиляция исходного файла "IO.cpp")
+  
+  Game.cpp
+D:\учебники и топ\tetris_tutorial_sdl\Game.cpp(22,10): error C1083: Не удается открыть файл включение: windows.h: No such file or directory,
+  Создание кода...
