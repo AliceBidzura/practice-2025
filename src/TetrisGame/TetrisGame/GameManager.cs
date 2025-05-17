@@ -15,8 +15,6 @@ namespace TetrisGame
         public readonly Pieces pieces;
         private readonly Board board;
         private readonly Random random;
-        public Board Board => board; // публичное только для чтения
-
 
         public int CurrentPiece;
         public int CurrentRotation;
@@ -24,7 +22,7 @@ namespace TetrisGame
         public int CurrentY;
 
         public int Score { get; set; }
-        public int Lines { get;  set; }
+        public int Lines { get; set; }
         public int Level => Lines / 10 + 1; // Каждые 10 линий — новый уровень
 
 
@@ -44,7 +42,7 @@ namespace TetrisGame
 
         private int GetRand(int a, int b)
         {
-            return random.Next(a, b + 1); 
+            return random.Next(a, b + 1);
         }
 
         //Инициализация первой и следующей фигуры
@@ -64,7 +62,7 @@ namespace TetrisGame
         }
 
         //Спавн следующей фигуры и заготовка новой
-        public  void CreateNewPiece()
+        public void CreateNewPiece()
         {
             CurrentPiece = nextPiece;
             CurrentRotation = nextRotation;
@@ -73,6 +71,19 @@ namespace TetrisGame
 
             nextPiece = GetRand(0, 6);
             nextRotation = GetRand(0, 3);
+        }
+        public int getNextPiece()
+        {
+            return this.nextPiece;
+        }
+
+        public int getNextRotation()
+        {
+            return this.nextRotation;
+        }
+        public Board getBoard()
+        {
+            return this.board;
         }
     }
 }

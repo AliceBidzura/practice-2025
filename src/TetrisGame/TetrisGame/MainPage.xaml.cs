@@ -18,7 +18,7 @@ namespace TetrisGame
             InitializeComponent();
 
             var pieces = new Pieces();
-            board = new Board(pieces); 
+            board = new Board(pieces);
             game = new GameManager(board, pieces);
 
             TetrisDrawable = new TetrisDrawable(game);

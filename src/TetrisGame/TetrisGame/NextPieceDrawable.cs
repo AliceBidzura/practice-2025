@@ -22,8 +22,8 @@ namespace TetrisGame
             canvas.FillColor = Colors.DarkSlateGray;
             canvas.FillRectangle(0, 0, dirtyRect.Width, dirtyRect.Height);
 
-            int piece = game.NextPiece;
-            int rotation = game.NextRotation;
+            int piece = game.getNextPiece();
+            int rotation = game.getNextRotation();
 
             canvas.FillColor = Colors.Orange;
 

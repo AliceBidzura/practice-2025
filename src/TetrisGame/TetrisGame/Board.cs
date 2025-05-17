@@ -17,7 +17,7 @@ namespace TetrisGame
 
         //int mBoard[BOARD_WIDTH][BOARD_HEIGHT]; // Board that contains the pieces
         //Pieces* mPieces;
-        public readonly int[,] mBoard = new int[BOARD_WIDTH, BOARD_WIDTH];
+        public readonly int[,] mBoard = new int[BOARD_WIDTH, BOARD_HEIGHT];
         public readonly Pieces mPieces;
 
         //public int GetBlock(int x, int y)
@@ -33,11 +33,11 @@ namespace TetrisGame
 
         public void InitBoard()
         {
-            for(int y = 0; y < BOARD_WIDTH; y++)
+            for (int y = 0; y < BOARD_HEIGHT; y++)
             {
-                for(int x = 0; x < BOARD_HEIGHT; x++)
+                for (int x = 0; x < BOARD_WIDTH; x++)
                 {
-                    mBoard[y, x] = POS_FREE;
+                    mBoard[x, y] = POS_FREE;
                 }
             }
         }
@@ -77,7 +77,7 @@ namespace TetrisGame
             return false;
         }
 
-        //Y: Vertical position in blocks of the line to delete
+        //Y: Vertical position in blocks of the line to \
         public void DeleteLine(int y)
         {
             for (int j = y; j > 0; j--) // rows
@@ -99,26 +99,28 @@ namespace TetrisGame
         {
             int linesRemoved = 0;
 
-            for (int y = 0; y < 20; y++)
+            for (int y = 0; y < BOARD_HEIGHT; y++)
             {
                 int filled = 0;
-                while (filled < 10 && mBoard[filled, y] == 1)
+                while (filled < BOARD_WIDTH)
                 {
-                    filled++;
+                    if (mBoard[filled, y] == POS_FILLED)
+                    {
+                        filled++;
+                    }
                 }
-
-                if (filled == 10)
+                if (filled == BOARD_WIDTH)
                 {
                     DeleteLine(y);
                     linesRemoved++;
                 }
+
             }
 
-            return linesRemoved; // ← ОБЯЗАТЕЛЬНО
+            return linesRemoved;
         }
 
-
-        public bool IsPossibleToMovement (int x, int y, int pPiece, int pRotation)
+        public bool IsPossibleToMovement(int x, int y, int pPiece, int pRotation)
         {
             for (int i1 = x, i2 = 0; i1 < x + PIECE_BLOCKS; i1++, i2++)
             {

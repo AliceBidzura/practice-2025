@@ -34,7 +34,7 @@ namespace TetrisGame
             {
                 for (int y = 0; y < 20; y++)
                 {
-                    if (game.Board.mBoard[x, y] == 1) // POS_FILLED
+                    if (game.getBoard().mBoard[x, y] == 1) // POS_FILLED
                     {
                         canvas.FillColor = Colors.Gray; // Или GetColorForPiece(...)
                         canvas.FillRectangle(x * CellSize, y * CellSize, CellSize - 1, CellSize - 1);
