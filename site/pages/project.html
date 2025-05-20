@@ -15,53 +15,44 @@
     <a href="../pages/about.html">О проекте</a>
     <a href="../pages/team.html">Участники</a>
     <a href="../pages/journal.html">Журнал</a>
-    <a href="../pages/resources.html">Ресурсы</a>
-    <a href="pages/partners.html">Партнёры</a>
+    <a href="../pages/partners.html">Партнёры</a>
     <a href="../pages/project.html">Мой проект</a>
+    <a href="../pages/resources.html">Ресурсы</a>
   </nav>
   <main>
-    <h2>Взаимодействие с партнёрской организацией</h2>
+    <h2>Мой проект: Tetris на C++ и C# MAUI</h2>
 
-    <h3>Мероприятие: Карьерный марафон</h3>
-    <p>
-    <b>Формат:</b> Выставка индустриальных партнёров<br>
-    <b>Дата:</b> 22.04.2025<br>
-    <b>Место:</b> Московский Политех, корпус на Большой Семеновской<br>
-    <b>Цель участия:</b> Ознакомление с работодателями и анализ карьерных перспектив
+    <p><b>Тип проекта:</b> Индивидуальный<br>
+    <b>Язык:</b>C++, C#<br>
+    <b>Технологии:</b> .NET MAUI, XAML, ООП<br>
+    <b>Цель:</b> Полное воспроизведение и дальнейший перенос основных структур игры Тетрис, написанной на языке C++, в современную кроссплатформенную среду .NET MAUI с использованием языка C#<br>
+    <a href=https://github.com/AliceBidzura/practice-2025>Ссылка на репозиторий проекта</a>
     </p>
-    <h3>Во время выставки я посетила стенды следующих организаций:</h3>
-        <div class="company-grid">
-            <div class="company-card">
-                <img src="https://spbgau.ru/upload/iblock/f44/kej9tueatlc97zp5z31zb03ja06dw2ye.jpg" alt="Россия – страна возможностей">
-                <p><b>Россия – страна возможностей</b><br>Карьерные треки, участие в конкурсах</p>
-            </div>
-            <div class="company-card">
-                <img src="https://sun1-21.userapi.com/impf/sJlnBUANyLU1cy0aq5Y092mIlErk7I5-5lgoyg/KtWZ5EEw7Ck.jpg?size=1920x768&quality=95&crop=0,208,2560,1022&sign=bf1d278bd15aca04bb96192da4e970c6&type=cover_group" alt="Young&&Yandex">
-                <p><b>Young&&Yandex</b><br>Много информации о стажировках для студентов</p>
-            </div>
-            <div class="company-card">
-                <img src="https://lh6.googleusercontent.com/proxy/FIeEcsAw4RNT74LOs65C9L4WFi4eJgIuH2d_yDIKtxPlXcSbOhg8MGvFPcUFmVPWrCzIjMbyb_VQefDV7ZJGtL-h0G0opMcoKiWt4LmPDQ" alt="ООО «Хэдхантер»">
-                <p><b>ООО «Хэдхантер»</b><br>Рассказали об аналитике рынка труда, цифровых карьерных картах</p>
-            </div>
-            <div class="company-card">
-                <img src="https://platforms.su/assets/user/img/product-logo/1594894460.jpg" alt="1С-Рарус">
-                <p><b>1С-Рарус</b><br>ERP-системы и стажировки</p>
-            </div>
-            <div class="company-card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiWQ4D2ENRjQ7eyNS-pP2d5LUrJAPTVU-jJQ&s" alt="Angara Security">
-                <p><b>Angara Security</b><br>Кибербезопасность и защита данных</p>
-            </div>
-            <div class="company-card">
-                <img src="https://media.v102.ru/pictures/20220215170450.jpg" alt="«ПСБ» и Банк «ВТБ»">
-                <p><b>«ПСБ» и Банк «ВТБ»</b><br>Информационная безопасность и анализ данных</p>
-            </div>
-        </div>
-        <h3>Полученные знания и навыки</h3>
-        <ol>
-            <li>Текущие тренды в индустрии.</li>
-            <li>Востребованность разработчиков, аналитиков данных, специалистов по кибербезопасности.</li>
-            <li>Практико-ориентированные стажировки и трековые программы.</li>
-            <li>Растущая роль софт-скиллов: коммуникация, адаптивность, цифровая грамотность.</li>
-        </ol>
-  </main>
-</body>
+
+    <h3>Особенности проекта</h3>
+    <ul>
+    <li>Начальный проект строго следует гайду на C++</li>
+    <li>Было проведено дальнейшее усложнение и адаптация под C#</li>
+    <li>В коде предусмотрены возможности для добавления новых функций и расширения логики</li>
+    <li>В написанном мной техническом руководстве пояснён каждый шаг основных структур — комментарии, принципы</li>
+    </ul>
+
+    <h3>Что реализовано</h3>
+    <ul>Реализована рабочая игра на C++
+    <li>Хранится игровое поле и проверяются коллизии</li>
+    <li>Логика удаления линий и генерации новой фигуры.</li>
+    <li>Устройство фигур (матрицы 5х5)</li>
+    </ul>
+    <ul>Реализовано в MAUI C#
+        <li>Устроено отрисовывающее пространство (GraphicsView и IDrawable)</li>
+        <li>Отслеживание координат: MAUI использует пиксели, C++ — логические блоки</li>
+        <li>Ручная реализация с ICanvas и Drawable</li>
+        <li>Графический вывод на мобильном экране;</li>
+        <li>Добавлено отображение статистики: очки, линии, уровень;</li>
+    </ul>
+    <h3>Скриншоты</h3>
+    <div class="gallery">
+    <img src="../images/tetris1.png" alt="Игровое поле">
+    <img src="../images/tetris2.png" alt="Фигуры">
+    </div>
+</main>
