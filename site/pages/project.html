@@ -6,6 +6,7 @@
   <title>Resources</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
+<script src="../lightbox.js"></script>
 <body>
   <header>
     <h1>ИТ-сервисы для Цифрового университета</h1>
@@ -52,7 +53,10 @@
     </ul>
     <h3>Скриншоты</h3>
     <div class="gallery">
-    <img src="../images/tetris1.png" alt="Игровое поле">
-    <img src="../images/tetris2.png" alt="Фигуры">
+      <img src="../images/Tetris1.jpg" alt="Игровое поле" onclick="openLightbox(this)">
+      <img src="../images/Tetris2.jpg" alt="Фигуры" onclick="openLightbox(this)">
     </div>
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="Просмотр">
+</div>
 </main>
