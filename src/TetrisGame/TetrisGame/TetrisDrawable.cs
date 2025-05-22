@@ -49,7 +49,8 @@ namespace TetrisGame
             {
                 for (int j = 0; j < 5; j++) // y в фигуре
                 {
-                    if (game.pieces.GetBlockType(game.CurrentPiece, game.CurrentRotation, i, j) != 0)
+                    //была ошибка в передаче координат
+                    if (game.pieces.GetBlockType(game.CurrentPiece, game.CurrentRotation, j, i) != 0)
                     {
                         int screenX = game.CurrentX + i;
                         int screenY = game.CurrentY + j;
