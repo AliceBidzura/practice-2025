@@ -57,9 +57,13 @@ namespace TetrisGame
             {
                 for (int j1 = y, j2 = 0; j1 < y + PIECE_BLOCKS; j1++, j2++)
                 {
-                    if (mPieces.GetBlockType(pPiece, pRotation, j2, i2) != 0)
+                    //проверка выхода за границы поля
+                    if (i1 >= 0 && i1 < BOARD_WIDTH && j1 >= 0 && j1 < BOARD_HEIGHT)
                     {
-                        mBoard[i1, j1] = POS_FILLED;
+                        if (mPieces.GetBlockType(pPiece, pRotation, j2, i2) != 0)
+                        {
+                            mBoard[i1, j1] = POS_FILLED;
+                        }
                     }
                 }
             }
@@ -88,11 +92,11 @@ namespace TetrisGame
                 }
             }
 
-            //// верхняя строка — чистая
-            //for (int i = 0; i < BOARD_WIDTH; i++)
-            //{
-            //    mBoard[i, 0] = POS_FREE;
-            //}
+            // верхняя строка — чистая
+            for (int i = 0; i < BOARD_WIDTH; i++)
+            {
+                mBoard[i, 0] = POS_FREE;
+            }
         }
 
         public int DeletePossibleLines()

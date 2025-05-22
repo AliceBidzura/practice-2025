@@ -62,7 +62,7 @@ namespace TetrisGame
         }
 
         //Спавн следующей фигуры и заготовка новой
-        public void CreateNewPiece()
+        public bool CreateNewPiece()
         {
             CurrentPiece = nextPiece;
             CurrentRotation = nextRotation;
@@ -71,6 +71,8 @@ namespace TetrisGame
 
             nextPiece = GetRand(0, 6);
             nextRotation = GetRand(0, 3);
+
+            return board.IsPossibleToMovement(CurrentX, CurrentY, CurrentPiece, CurrentRotation);
         }
         public int getNextPiece()
         {
