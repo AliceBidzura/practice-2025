@@ -102,9 +102,10 @@ namespace TetrisGame
             for (int y = 0; y < BOARD_HEIGHT; y++)
             {
                 int filled = 0;
-                while (filled < BOARD_WIDTH)
+                //Фатальный баг — бесконечный цикл
+                for (int x = 0; x < BOARD_WIDTH; x++)
                 {
-                    if (mBoard[filled, y] == POS_FILLED)
+                    if (mBoard[x, y] == POS_FILLED)
                     {
                         filled++;
                     }
