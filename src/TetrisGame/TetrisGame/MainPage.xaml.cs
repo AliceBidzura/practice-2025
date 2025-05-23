@@ -95,11 +95,11 @@ namespace TetrisGame
                     break;
 
                 case "Down":
-                    if (board.IsPossibleToMovement(game.CurrentX, game.CurrentY + 1, game.CurrentPiece, game.CurrentRotation))
+                    while(board.IsPossibleToMovement(game.CurrentX, game.CurrentY + 1, game.CurrentPiece, game.CurrentRotation))
                     {
                         game.CurrentY++;
-                        GameCanvas.Invalidate();
                     }
+                    GameCanvas.Invalidate();
                     break;
 
                 case "Rotate":
